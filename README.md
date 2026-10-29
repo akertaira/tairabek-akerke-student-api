@@ -1,4 +1,4 @@
-# tairabek-akerke-student-api
+# Student API - documentation by Akerke Tairabek
 
 Spring Boot CRUD REST API for managing students.
 Author: **Akerke Tairabek**, group IT2-2307, student ID 38137.
