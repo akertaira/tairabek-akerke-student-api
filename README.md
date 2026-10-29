@@ -1,4 +1,4 @@
-# Student API - main branch of Akerke Tairabek
+# Student API - documentation by Akerke Tairabek
 
 Spring Boot CRUD REST API for managing students.
 Author: **Akerke Tairabek**, group IT2-2307, student ID 38137.
@@ -15,6 +15,7 @@ Java 17, Spring Boot 3, Gradle, PostgreSQL 16, Docker, Docker Compose, Jenkins.
 | POST | `/api/students` | Create student |
 | PUT | `/api/students/{id}` | Update student |
 | DELETE | `/api/students/{id}` | Delete student |
+| GET | `/api/students/search?lastName=Tairabek` | Search by last name |
 
 ## Run
 ```bash
@@ -25,3 +26,4 @@ curl http://localhost:8080/
 
 ## Changes
 - Akerke Tairabek: initial version of the Student API.
+- Akerke Tairabek: added search by last name (GET /api/students/search).

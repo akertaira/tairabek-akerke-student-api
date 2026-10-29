@@ -39,6 +39,11 @@ public class StudentController {
         return repository.findAll();
     }
 
+    @GetMapping("/api/students/search")
+    public List<Student> searchByLastName(@RequestParam String lastName) {
+        return repository.findByLastNameIgnoreCase(lastName);
+    }
+
     @GetMapping("/api/students/{id}")
     public Student getById(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
