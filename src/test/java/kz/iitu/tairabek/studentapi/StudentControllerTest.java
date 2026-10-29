@@ -26,7 +26,7 @@ class StudentControllerTest {
     void infoShowsStudentName() throws Exception {
         mvc.perform(get("/"))
            .andExpect(status().isOk())
-           .andExpect(jsonPath("$.author", is("Akerke Tairabek")));
+           .andExpect(jsonPath("$.author", is("Wrong Name")));
     }
 
     @Test
