@@ -1,0 +1,46 @@
+name: tairabek-akerke-student-api
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: tairabek-akerke-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - tairabek_akerke_pgdata:/var/lib/postgresql/data
+    networks:
+      - tairabek-akerke-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  app:
+    build: .
+    image: tairabek-akerke-student-api:v1.0-tairabek-akerke
+    container_name: tairabek-akerke-app
+    ports:
+      - "8080:8080"
+    environment:
+      # "db" is the Compose service name, resolved by Docker DNS (not localhost!)
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      APP_VERSION: ${APP_VERSION:-1.0.0}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - tairabek-akerke-net
+    restart: unless-stopped
+
+volumes:
+  tairabek_akerke_pgdata:
+
+networks:
+  tairabek-akerke-net:
+    driver: bridge

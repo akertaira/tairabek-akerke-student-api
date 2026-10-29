@@ -1,0 +1,15 @@
+# Build
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+# IDE
+.idea/
+*.iml
+.vscode/
+# Secrets - never commit!
+.env
+*.pem
+*.key
+# Runtime output
+logs/*.log
+logs/*.txt
