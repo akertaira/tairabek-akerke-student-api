@@ -27,3 +27,4 @@ curl http://localhost:8080/
 ## Changes
 - Akerke Tairabek: initial version of the Student API.
 - Akerke Tairabek: added search by last name (GET /api/students/search).
+- Akerke Tairabek: CI auto-trigger test
